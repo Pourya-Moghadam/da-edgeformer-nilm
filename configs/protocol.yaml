@@ -1,0 +1,77 @@
+schema_version: 1
+protocol_id: da-edgeformer-manuscript-v1
+assumption_policy: deterministic_reasonable_default_when_not_stated
+
+data:
+  split_rule: dataset-native household order, first N train, next N validation, remainder test
+  target_appliances: [refrigerator, washing_machine, microwave]
+  appliance_priority:
+    refrigerator: [fridge, fridge_freezer, freezer]
+    washing_machine: [washing_machine, washer_dryer]
+    microwave: [microwave]
+  missing_target_rule: mask unavailable appliance-household pairs from losses and metrics
+  duplicate_target_rule: use lowest channel/device instance; sum only multi-meter components
+  refit_metadata_source: NILMTK converter metadata at commit 8967bd1fde24d0c8d89408179dd2499d8e60b4c3
+  enertalk_metadata_source: ch-shin/ENERTALK-dataset commit 78087486f78d24dab2bdf1540556b5df867b1141
+  normalization: scalar aggregate mean and standard deviation from training households only
+  timestamp_duplicates: keep last observation at a duplicated timestamp
+
+architecture:
+  branch_width: 372
+  head_hidden_width: 516
+  adapter_linear_bias: true
+  detector_projection: seeded orthonormal random projection, frozen for all training
+  detector_projection_seed: 1729
+  prediction_target: final position of each causal window
+  nonnegative_power: ReLU regression output
+
+training:
+  optimizer: AdamW
+  initialization: PyTorch module defaults after set_reproducible_seed
+  deterministic_algorithms: true
+  epochs: 50
+  batch_size: 64
+  weight_decay: 0.0001
+  gradient_clipping_norm: 1.0
+  checkpoint_selection: lowest validation household-macro MAE
+  seeds: [11, 23, 37, 53, 71]
+  support_windows: 256
+  query_windows: 256
+  retained_windows: 64
+  label_schedule: exact-size uniform selection without replacement
+
+online:
+  replay_sampling: deterministic reservoir, uniform without replacement
+  importance_decay: 0.9
+  alarm_persistence: pending until an update or end of stream
+  periodic_interval_samples: 360
+  random_trigger_probability: 0.002777777777777778
+  matched_update_rule: periodic and seeded-random schedules select exactly the B9 permitted-update count from gate-feasible indices for each seed and stream order
+  adwin: {implementation: repository_local_v1, delta: 0.002, min_subwindow: 32, max_window: 1024}
+
+metrics:
+  nmae: appliance MAE divided by appliance mean absolute target power, then macro averaged
+  sae: absolute relative aggregate energy error per appliance, then macro averaged
+  state_rule: power greater than or equal to the configured watt threshold
+  undefined_binary_metric: 0 when its confusion-matrix denominator is zero
+  detector_tolerance_samples: 180
+  smoothing_block_samples: 60
+  recovery_reference_samples: 360
+  recovery_tolerance: 0.05
+  recovery_consecutive_blocks: 5
+
+statistics:
+  bootstrap_iterations: 10000
+  permutation_iterations: 100000
+  bootstrap_seed: 20260517
+  effect_size: paired mean difference divided by paired-difference sample standard deviation
+  multiplicity_correction: Holm
+
+profiling:
+  precision: FP32
+  threads: 1
+  warmup_windows: 100
+  measured_windows: 1000
+  input: all-zero normalized 256-sample causal window
+  clock: perf_counter_ns
+  rss: process ru_maxrss

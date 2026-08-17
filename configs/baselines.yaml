@@ -1,0 +1,36 @@
+schema_version: 1
+prediction_contract: power/state/appliances NPZ validated by da_edgeformer.baselines.external
+comparators:
+  STNILM:
+    citation_doi: 10.1016/j.segan.2023.101246
+    implementation: pinned_public_reimplementation
+    repository: https://github.com/adrienpetralia/NILMFormer
+    commit: e73a975a42fbebed6f9d7e90d75f7f48ae02fed9
+    source_file: src/baselines/nilm/stnilm.py
+    license: MIT
+  AugLPN-NILM:
+    citation_doi: 10.1016/j.segan.2024.101378
+    implementation: pinned_author_repository
+    repository: https://github.com/linfengYang/AugLPN_NILM
+    commit: 5e3b37c5ad91fa1a243d144d8ba133a78a6fb0d9
+    source_file: NILM_Models.py
+    license: no_license_declared_use_in_place
+  Energformer:
+    citation_doi: 10.1109/TCE.2023.3237862
+    implementation: pinned_public_reimplementation
+    repository: https://github.com/adrienpetralia/NILMFormer
+    commit: e73a975a42fbebed6f9d7e90d75f7f48ae02fed9
+    source_file: src/baselines/nilm/energformer.py
+    license: MIT
+  ConvTransNILM:
+    citation_doi: 10.1016/j.enbuild.2025.116361
+    implementation: paper_derived_external_rerun
+    public_source_found: false
+  Metric Meta-NILM:
+    citation_doi: 10.1109/TSG.2023.3263814
+    implementation: paper_derived_external_rerun
+    public_source_found: false
+  RTNILM:
+    citation_doi: 10.1109/TII.2025.3574351
+    implementation: paper_derived_external_rerun
+    public_source_found: false

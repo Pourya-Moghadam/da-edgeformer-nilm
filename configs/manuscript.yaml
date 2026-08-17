@@ -1,0 +1,55 @@
+model:
+  appliances: [refrigerator, washing_machine, microwave]
+  window_size: 256
+  branch_width: 372
+  width: 64
+  conv_kernels: [3, 5, 7]
+  conv_dilations: [1, 2, 4]
+  attention_blocks: 2
+  attention_heads: 4
+  local_span: 64
+  feedforward_width: 128
+  adapter_bottleneck: 8
+  head_hidden_width: 516
+  detector_dim: 16
+  detector_projection_seed: 1729
+  dropout: 0.0
+loss:
+  huber_delta_w: 20.0
+  classification_weight: 0.25
+  replay_weight: 1.0
+  stability_weight: 0.5
+  retention_weight: 0.5
+drift:
+  beta_short: 0.90
+  beta_long: 0.995
+  threshold_quantile: 0.995
+  threshold: null
+  consecutive: 3
+  epsilon: 1.0e-6
+  warmup: 256
+controller:
+  capacity: 4
+  refill_seconds: 900
+  cooldown_seconds: 600
+  minimum_new_labels: 32
+  replay_capacity: 256
+  update_steps: 2
+training:
+  seeds: [11, 23, 37, 53, 71]
+  batch_size: 64
+  epochs: 50
+  inner_steps: 2
+  inner_learning_rate: 0.001
+  outer_learning_rate: 0.0001
+  weight_decay: 0.0001
+  gradient_clip_norm: 1.0
+  label_budget: 0.05
+data:
+  grid_seconds: 10
+  max_gap_native_intervals: 2.0
+  purge_samples: 255
+  state_thresholds_w:
+    refrigerator: 50
+    washing_machine: 20
+    microwave: 200

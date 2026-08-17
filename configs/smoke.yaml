@@ -1,0 +1,22 @@
+model:
+  appliances: [refrigerator, washing_machine, microwave]
+  window_size: 32
+  branch_width: 16
+  width: 16
+  conv_kernels: [3, 5, 7]
+  conv_dilations: [1, 2, 4]
+  attention_blocks: 1
+  attention_heads: 4
+  local_span: 8
+  feedforward_width: 32
+  adapter_bottleneck: 4
+  head_hidden_width: 16
+  detector_dim: 8
+training:
+  seeds: [11]
+  batch_size: 8
+  epochs: 1
+  inner_steps: 1
+  label_budget: 0.25
+data:
+  purge_samples: 31

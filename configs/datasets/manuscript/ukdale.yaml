@@ -1,0 +1,14 @@
+dataset: UK-DALE
+format: channel_dat
+native_interval_seconds: 6
+splits:
+  train: ["1", "2", "3"]
+  validation: ["4"]
+  test: ["5"]
+households:
+  - {id: "1", path: house_1, aggregate_channels: [1]}
+  - {id: "2", path: house_2, aggregate_channels: [1]}
+  - {id: "3", path: house_3, aggregate_channels: [1]}
+  - {id: "4", path: house_4, aggregate_channels: [1]}
+  - {id: "5", path: house_5, aggregate_channels: [1]}
+

@@ -1,0 +1,91 @@
+dataset: REFIT
+format: csv
+native_interval_seconds: 8
+splits:
+  train: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+  validation: ["13", "15", "16", "17"]
+  test: ["18", "19", "20", "21"]
+households:
+  - &defaults
+    id: "1"
+    path: CLEAN_House1.csv
+    timestamp_column: Unix
+    timestamp_unit: s
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance5}
+  - <<: *defaults
+    id: "2"
+    path: CLEAN_House2.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance2, microwave: Appliance5}
+  - <<: *defaults
+    id: "3"
+    path: CLEAN_House3.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance2, washing_machine: Appliance6, microwave: Appliance8}
+  - <<: *defaults
+    id: "4"
+    path: CLEAN_House4.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance5, microwave: Appliance8}
+  - <<: *defaults
+    id: "5"
+    path: CLEAN_House5.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance3, microwave: Appliance7}
+  - <<: *defaults
+    id: "6"
+    path: CLEAN_House6.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance2, microwave: Appliance6}
+  - <<: *defaults
+    id: "7"
+    path: CLEAN_House7.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance5}
+  - <<: *defaults
+    id: "8"
+    path: CLEAN_House8.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance4, microwave: Appliance8}
+  - <<: *defaults
+    id: "9"
+    path: CLEAN_House9.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance3, microwave: Appliance6}
+  - <<: *defaults
+    id: "10"
+    path: CLEAN_House10.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance4, washing_machine: Appliance5, microwave: Appliance8}
+  - <<: *defaults
+    id: "11"
+    path: CLEAN_House11.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance3, microwave: Appliance6}
+  - <<: *defaults
+    id: "12"
+    path: CLEAN_House12.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, microwave: Appliance5}
+  - <<: *defaults
+    id: "13"
+    path: CLEAN_House13.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance2, washing_machine: Appliance3, microwave: Appliance7}
+  - <<: *defaults
+    id: "15"
+    path: CLEAN_House15.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance3, microwave: Appliance7}
+  - <<: *defaults
+    id: "16"
+    path: CLEAN_House16.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance5}
+  - <<: *defaults
+    id: "17"
+    path: CLEAN_House17.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance2, washing_machine: Appliance4, microwave: Appliance7}
+  - <<: *defaults
+    id: "18"
+    path: CLEAN_House18.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance5, microwave: Appliance9}
+  - <<: *defaults
+    id: "19"
+    path: CLEAN_House19.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance2, microwave: Appliance4}
+  - <<: *defaults
+    id: "20"
+    path: CLEAN_House20.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance4, microwave: Appliance8}
+  - <<: *defaults
+    id: "21"
+    path: CLEAN_House21.csv
+    columns: {aggregate: Aggregate, refrigerator: Appliance1, washing_machine: Appliance3}
+

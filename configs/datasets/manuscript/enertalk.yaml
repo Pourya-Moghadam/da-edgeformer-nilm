@@ -1,0 +1,31 @@
+dataset: ENERTALK
+format: parquet_directory
+native_interval_seconds: 0.06666666666666667
+splits:
+  train: ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"]
+  validation: ["14", "15", "16", "17"]
+  test: ["18", "19", "20", "21"]
+households:
+  - {id: "00", path: "00"}
+  - {id: "01", path: "01"}
+  - {id: "02", path: "02"}
+  - {id: "03", path: "03"}
+  - {id: "04", path: "04"}
+  - {id: "05", path: "05"}
+  - {id: "06", path: "06"}
+  - {id: "07", path: "07"}
+  - {id: "08", path: "08"}
+  - {id: "09", path: "09"}
+  - {id: "10", path: "10"}
+  - {id: "11", path: "11"}
+  - {id: "12", path: "12"}
+  - {id: "13", path: "13"}
+  - {id: "14", path: "14"}
+  - {id: "15", path: "15"}
+  - {id: "16", path: "16"}
+  - {id: "17", path: "17"}
+  - {id: "18", path: "18"}
+  - {id: "19", path: "19"}
+  - {id: "20", path: "20"}
+  - {id: "21", path: "21"}
+

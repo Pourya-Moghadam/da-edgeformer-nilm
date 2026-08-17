@@ -1,0 +1,11 @@
+# Reference Linux CPU environment used for repository reproduction.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.13.0+cpu
+numpy==2.5.2
+pandas==2.3.3
+PyYAML==6.0.3
+pyarrow==22.0.0
+openpyxl==3.1.5
+psutil==7.0.0
+thop==0.1.1.post2209072238

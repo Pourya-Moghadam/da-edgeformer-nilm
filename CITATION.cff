@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript."
+title: "DA-EdgeFormer NILM"
+type: software
+authors:
+  - family-names: Moghadam
+    given-names: Pourya
+  - family-names: Roshan Fekr
+    given-names: Atena
+repository-code: "https://github.com/Pourya-Moghadam/da-edgeformer-nilm"
+license: MIT

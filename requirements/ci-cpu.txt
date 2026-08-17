@@ -1,0 +1,10 @@
+# Reproducible CI environment: CPython 3.11/3.12 on x86_64 Linux.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.13.0+cpu
+numpy==2.5.2
+pandas==2.3.3
+PyYAML==6.0.3
+pytest==8.4.2
+pytest-cov==6.3.0
+ruff==0.16.3

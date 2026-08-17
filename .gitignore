@@ -1,0 +1,39 @@
+# User-supplied and generated data
+/data/
+/datasets/
+/prepared/
+*.h5
+*.hdf5
+*.npz
+*.npy
+*.parquet
+
+# Experiment artifacts
+/artifacts/
+/external/
+/checkpoints/
+/outputs/
+/reports/
+/runs/
+/wandb/
+*.pt
+*.pth
+*.ckpt
+
+# Python/tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Editors/OS
+.DS_Store
+.idea/
+.vscode/
